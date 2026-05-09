@@ -4,7 +4,7 @@ import "github.com/poteto0/go-nba-sdk/types"
 
 type GetStandingsInput struct {
 	Season     string `json:"season" jsonschema:"Season in the format YYYY-YY, default: 2025-26"`
-	Limit      int    `json:"limit"  jsonschema:"Maximum number of records to return. Default is 30, must be 0 < limit <= 30."`
+	Limit      int    `json:"limit"  jsonschema:"Maximum number of records to return. Default is 30, must be 0 < limit <= 30. if conference filter is applied, limit is applied to each conference separately."`
 	Conference string `json:"conference" jsonschema:"Optional filter for conference (East/West), default is no filter"`
 }
 

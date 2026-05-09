@@ -3,6 +3,10 @@ package standings
 import "fmt"
 
 func ValidateGetStandingsInput(input *GetStandingsInput) error {
+	if input == nil {
+		return fmt.Errorf("input cannot be nil")
+	}
+
 	if len(input.Season) != 0 && (len(input.Season) != 7 || input.Season[4] != '-') {
 		return fmt.Errorf("invalid season format: %s", input.Season)
 	}
