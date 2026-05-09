@@ -4,10 +4,25 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/modelcontextprotocol/go-sdk/mcp"
+	"github.com/poteto0/nba-stats-mcp/constants"
 	"github.com/poteto0/nba-stats-mcp/tools"
+	"golang.org/x/time/rate"
 )
+
+func rateLimitMiddleware(next http.Handler) http.Handler {
+	limiter := rate.NewLimiter(rate.Every(time.Minute/time.Duration(constants.MaxRequestsPerMinute)), constants.MaxRequestsPerMinute)
+
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if !limiter.Allow() {
+			http.Error(w, "Too Many Requests", http.StatusTooManyRequests)
+			return
+		}
+		next.ServeHTTP(w, r)
+	})
+}
 
 func main() {
 	server := mcp.NewServer(&mcp.Implementation{
@@ -28,7 +43,7 @@ func main() {
 		return server
 	}, nil)
 
-	http.Handle("/", handler)
+	http.Handle("/", rateLimitMiddleware(handler))
 
 	log.Printf("MCP server listening on :%s/", port)
 	if err := http.ListenAndServe(":"+port, nil); err != nil {
