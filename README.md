@@ -10,6 +10,10 @@ https://nba-stats-mcp.poteto-mahiro.com/
 
 - [claudeで始める](./docs/quickstart/claude/README.md)
 
+## 使用例
+
+- [使用例](./docs/usecase/README.md)
+
 ## マイルストーン
 
 - [マイルストーン](./docs/milestone/README.md)
