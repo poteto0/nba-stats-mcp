@@ -9,3 +9,7 @@ https://nba-stats-mcp.poteto-mahiro.com/
 ## 始め方
 
 - [claudeで始める](./docs/quickstart/claude/README.md)
+
+## マイルストーン
+
+- [マイルストーン](./docs/milestone/README.md)
