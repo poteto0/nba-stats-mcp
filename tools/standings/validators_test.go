@@ -25,9 +25,8 @@ func TestValidateGetStandingsInput(t *testing.T) {
 		{
 			name: "valid season format",
 			input: &standings.GetStandingsInput{
-				Season:     "2025-26",
-				Limit:      30,
-				Conference: "East",
+				Season: "2025-26",
+				Limit:  30,
 			},
 			wantErr: false,
 		},

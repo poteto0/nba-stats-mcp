@@ -138,7 +138,7 @@ func GetPlayByPlaySummary(ctx context.Context, req *mcp.CallToolRequest, input P
 			continue
 		}
 
-		if input.IsFieldGoal && !(action.IsFieldGoal == 0) {
+		if input.IsFieldGoal && action.IsFieldGoal != 0 {
 			continue
 		}
 
