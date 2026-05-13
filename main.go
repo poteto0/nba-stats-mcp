@@ -14,7 +14,7 @@ import (
 func main() {
 	server := mcp.NewServer(&mcp.Implementation{
 		Name:    "nba-stats-mcp",
-		Version: "0.1.1",
+		Version: "0.3.2",
 	}, nil)
 
 	tools.RegisterTools(server)

@@ -23,6 +23,7 @@ func GetDraftCombine(ctx context.Context, req *mcp.CallToolRequest, input GetDra
 	client := internal.GetGNSClient()
 	result := client.Draft.GetCombineStats(
 		&types.DraftCombineStatsParams{
+			LeagueID:   "00",
 			SeasonYear: input.SeasonYear,
 		},
 	)
@@ -58,6 +59,7 @@ func GetCombineSimilarity(ctx context.Context, req *mcp.CallToolRequest, input G
 	client := internal.GetGNSClient()
 	result := client.Draft.GetCombineStats(
 		&types.DraftCombineStatsParams{
+			LeagueID:   "00",
 			SeasonYear: input.PlayerSeasonYear,
 		},
 	)
