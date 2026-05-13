@@ -33,3 +33,31 @@ func ValidateGetDraftCombineInput(input *GetDraftCombineInput) error {
 
 	return nil
 }
+
+func ValidateGetCombineSimilarityInput(input *GetCombineSimilarityInput) error {
+	if input == nil {
+		return fmt.Errorf("input cannot be nil")
+	}
+
+	if input.PlayerSeasonYear == "" {
+		return fmt.Errorf("player season year is required")
+	}
+
+	if input.PlayerName == "" {
+		return fmt.Errorf("player name is required")
+	}
+
+	if input.TopK < 0 {
+		return fmt.Errorf("topK cannot be negative")
+	}
+
+	if input.TopK == 0 {
+		input.TopK = 5
+	}
+
+	if input.TopK > 10 {
+		return fmt.Errorf("topK cannot be greater than 10")
+	}
+
+	return nil
+}
