@@ -30,9 +30,10 @@ func TestGetCombineSimilarityHappyPath(t *testing.T) {
 	req := &mcp.CallToolRequest{}
 	ctx := context.Background()
 	input := draft.GetCombineSimilarityInput{
-		PlayerSeasonYear: "2023-24",
-		PlayerName:       "Victor Wembanyama",
-		TopK:             5,
+		PlayerSeasonYear:   "2024-25",
+		PlayerName:         "Donovan Clingan",
+		TopK:               5,
+		SeasonYearMoreThan: "2019-20",
 	}
 
 	// Act

@@ -90,6 +90,36 @@ func TestCalculateSimilarityScore(t *testing.T) {
 					ThreeQuarterSprintWeight*math.Pow(3.0-1.0, 2),
 			) / 8,
 		},
+		{
+			name: "if player's stats is nil, return count of nil",
+			args: args{
+				playerStats1: DraftCombineSimilarityRecord{
+					DraftCombineStatsRecord: types.DraftCombineStatsRecord{
+						PlayerName:         "Player A",
+						HeightWoShoes:      new(float64(80)),
+						Weight:             new(float64(100)),
+						Wingspan:           new(float64(82)),
+						MaxVertical:        new(float64(40)),
+						StandingVertical:   new(float64(30)),
+						StandingReach:      new(float64(120)),
+						ThreeQuarterSprint: new(float64(3.0)),
+					},
+				},
+				playerStats2: DraftCombineSimilarityRecord{
+					DraftCombineStatsRecord: types.DraftCombineStatsRecord{
+						PlayerName:         "Player B",
+						HeightWoShoes:      nil,
+						Weight:             nil,
+						Wingspan:           nil,
+						MaxVertical:        nil,
+						StandingVertical:   nil,
+						StandingReach:      nil,
+						ThreeQuarterSprint: nil,
+					},
+				},
+			},
+			want: math.Sqrt(7),
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

@@ -21,11 +21,12 @@ type GetDraftCombineStatsResult struct {
 
 type GetCombineSimilarityInput struct {
 	// ! required fields
-	PlayerSeasonYear   string `json:"seasonYear" jsonschema:"The season year for which to retrieve the draft combine results (e.g. '2023-24')"`
-	PlayerName         string `json:"playerName" jsonschema:"The name of the player for whom to find similar players based on draft combine measurements (case-insensitive). The Player must be a player from the PlayerSeasonYear."`
-	TopK               int    `json:"topK,omitempty" jsonschema:"The number of similar players to return (default is 5 & maximum is 10)"`
-	SeasonYearMoreThan string `json:"seasonYearMoreThan,omitempty" jsonschema:"Optional filter to only include combine results from seasons after the specified season year (e.g. '2020-21'). default is one year before the PlayerSeasonYear. this should be more than or equal to 2001-02, which is the earliest season for which we have combine data."`
-	SeasonLessThan     string `json:"seasonYearLessThan,omitempty" jsonschema:"Optional filter to only include combine results from seasons before the specified season year (e.g. '2020-21'). default not search over than PlayerSeasonYear. this should be less than or equal to current season, which is the latest season for which we have combine data."`
+	PlayerSeasonYear string `json:"seasonYear" jsonschema:"The season year of the player to compare (e.g. '2023-24')"`
+	PlayerName       string `json:"playerName" jsonschema:"The name of the player to find similar players for (case-insensitive). The player must exist in the specified PlayerSeasonYear."`
+
+	TopK               int    `json:"topK,omitempty" jsonschema:"The number of similar players to return (default: 5, maximum: 10)"`
+	SeasonYearMoreThan string `json:"seasonYearMoreThan,omitempty" jsonschema:"Optional: Start season year for search (e.g., '2020-21'). Defaults to one year before PlayerSeasonYear. Earliest available is '2001-02'."`
+	SeasonLessThan     string `json:"seasonYearLessThan,omitempty" jsonschema:"Optional: End season year for search (e.g., '2022-23'). Defaults to PlayerSeasonYear. Latest available is the current season."`
 }
 
 type DraftCombineSimilarityRecord struct {
