@@ -79,11 +79,7 @@ func GetCombineSimilarity(ctx context.Context, req *mcp.CallToolRequest, input G
 		},
 	)
 	if len(filteredStats) == 0 {
-		return &mcp.CallToolResult{
-			Content: []mcp.Content{
-				&mcp.TextContent{Text: "No draft combine results found for the specified player and season."},
-			},
-		}, GetCombineSimilarityResult{}, nil
+		return nil, GetCombineSimilarityResult{}, nil
 	}
 
 	playerStats := filteredStats[0]
@@ -136,9 +132,5 @@ func GetCombineSimilarity(ctx context.Context, req *mcp.CallToolRequest, input G
 		similarityResults = similarityResults[:input.TopK]
 	}
 
-	return &mcp.CallToolResult{
-		Content: []mcp.Content{
-			&mcp.TextContent{Text: "Similar players retrieved successfully."},
-		},
-	}, GetCombineSimilarityResult{SimilarPlayers: similarityResults}, nil
+	return nil, GetCombineSimilarityResult{SimilarPlayers: similarityResults}, nil
 }
