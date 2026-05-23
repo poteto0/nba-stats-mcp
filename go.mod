@@ -3,7 +3,7 @@ module github.com/poteto0/nba-stats-mcp
 go 1.26.1
 
 require (
-	github.com/modelcontextprotocol/go-sdk v1.6.0
+	github.com/modelcontextprotocol/go-sdk v1.6.1
 	github.com/poteto-go/tslice v0.4.1
 	github.com/poteto0/go-nba-sdk v0.3.1
 	github.com/stretchr/testify v1.11.1
